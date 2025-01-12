@@ -1,4 +1,4 @@
-from .. import model
+from ..src import model
 import mibian
 
 
