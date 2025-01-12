@@ -1,6 +1,8 @@
 import streamlit as st
 import controller as ctrl
 
+def init_title() -> None:
+    st.title("Black-Scholes Options Pricer")
 
 def init_sidebar() -> None:
     st.sidebar.title("Black-Scholes Model")
@@ -71,5 +73,6 @@ def price_display() -> None:
     
     
 if __name__ == '__main__':
+    init_title()
     init_sidebar()
     price_display() 
