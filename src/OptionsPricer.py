@@ -2,10 +2,10 @@ import streamlit as st
 import controller as ctrl
 
 def init_title() -> None:
-    st.title("Black-Scholes Options Pricer")
+    st.title("Black-Scholes Pricing Model")
 
 def init_sidebar() -> None:
-    st.sidebar.title("Black-Scholes Model")
+    st.sidebar.title("Inputs:")
     stock_price: float = st.sidebar.number_input(label="Current Stock Price", min_value=0.0)
     strike_price: float = st.sidebar.number_input(label="Strike Price", min_value=0.0)
     years_to_exp: int = st.sidebar.number_input(label="Years to Maturity", min_value=0.0)
@@ -37,13 +37,9 @@ def get_put_price() -> str:
     else:
         return ""
 
-def price_display() -> None:
-    col1, col2 = st.columns(2)
+def display_call(col, call_price: str) -> None:
 
-    call_price: str = get_call_price()
-    put_price: str = get_put_price()
-
-    with col1:
+    with col:
         with st.container():
             st.markdown(f"""
                 <div style="
@@ -57,7 +53,9 @@ def price_display() -> None:
                 </div>
             """, unsafe_allow_html=True)
 
-    with col2:
+def display_put(col, put_price: str) -> None:
+
+    with col:
         with st.container():
             st.markdown(f"""
                 <div style="
@@ -70,6 +68,18 @@ def price_display() -> None:
                     <h2>{put_price}</h2>
                 </div>
             """, unsafe_allow_html=True)
+
+
+def price_display() -> None:
+    col1, col2 = st.columns(2)
+    call_price: str = get_call_price()
+    put_price: str = get_put_price()
+
+    with col1:
+        display_call(col1, call_price)
+
+    with col2:
+        display_put(col2, put_price)
     
     
 if __name__ == '__main__':
