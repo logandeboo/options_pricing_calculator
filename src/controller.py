@@ -1,6 +1,5 @@
-import model
 import streamlit as st
-import mibian
+from black_scholes import BlackScholes
 
 def get_call_price() -> float:
     
@@ -14,8 +13,8 @@ def get_call_price() -> float:
     if S == 0 or K == 0 or T == 0 or sigma == 0:
         return 0
 
-    call_price: float = model.black_scholes(S, K, T, r, sigma, option_type)
-    return call_price
+    bs: float = BlackScholes(S, K, T, r, sigma)
+    return bs.price('call')
 
 def get_put_price() -> float:
     
@@ -29,7 +28,7 @@ def get_put_price() -> float:
     if S == 0 or K == 0 or T == 0 or sigma == 0:
         return 0
 
-    put_price: float = model.black_scholes(S, K, T, r, sigma, option_type)
-    return put_price
+    bs: float = BlackScholes(S, K, T, r, sigma)
+    return bs.price('put')
 
 
