@@ -1,4 +1,4 @@
-from ..src.black_scholes import BlackScholes
+from ..src.black_scholes import BlackScholesModel
 import mibian
 
 
@@ -17,8 +17,8 @@ def test_bs_1() -> None:
     mibian_call = bs.callPrice
     mibian_put = bs.putPrice
 
-    # Create BlackScholes instance with converted values
-    my_bs = BlackScholes(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
+    # Create BlackScholesModel instance with converted values
+    my_bs = BlackScholesModel(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
     my_call = my_bs.price('call')
     my_put = my_bs.price('put')
 
@@ -37,7 +37,7 @@ def test_bs_2() -> None:
     mibian_call = bs.callPrice
     mibian_put = bs.putPrice
 
-    my_bs = BlackScholes(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
+    my_bs = BlackScholesModel(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
     my_call = my_bs.price('call')
     my_put = my_bs.price('put')
 
@@ -57,7 +57,7 @@ def test_bs_3() -> None:
     mibian_call = bs.callPrice
     mibian_put = bs.putPrice
 
-    my_bs = BlackScholes(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
+    my_bs = BlackScholesModel(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
     my_call = my_bs.price('call')
     my_put = my_bs.price('put')
 
@@ -75,7 +75,7 @@ def test_bs_3() -> None:
     mibian_call = bs.callPrice
     mibian_put = bs.putPrice
 
-    my_bs = BlackScholes(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
+    my_bs = BlackScholesModel(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
     my_call = my_bs.price('call')
     my_put = my_bs.price('put')
 
@@ -94,7 +94,7 @@ def test_calc_delta() -> None:
     mibian_call_delta = bs.callDelta
     mibian_put_delta = bs.putDelta
 
-    my_bs = BlackScholes(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
+    my_bs = BlackScholesModel(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
     my_call_delta = my_bs.delta('call')
     my_put_delta = my_bs.delta('put')
 
@@ -112,7 +112,7 @@ def test_calc_gamma() -> None:
     bs = mibian.BS([S, K, r, T], volatility=sigma)
     mibian_gamma = bs.gamma
 
-    my_bs = BlackScholes(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
+    my_bs = BlackScholesModel(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
     my_gamma = my_bs.gamma()
 
     assert my_gamma == mibian_gamma
@@ -129,7 +129,7 @@ def test_calc_theta() -> None:
     mibian_call_theta = bs.callTheta
     mibian_put_theta = bs.putTheta
 
-    my_bs = BlackScholes(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
+    my_bs = BlackScholesModel(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
     my_call_theta = my_bs.theta('call')
     my_put_theta = my_bs.theta('put')
 
@@ -147,7 +147,7 @@ def test_calc_vega() -> None:
     bs = mibian.BS([S, K, r, T], volatility=sigma)
     mibian_vega = bs.vega
 
-    my_bs = BlackScholes(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
+    my_bs = BlackScholesModel(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
     my_vega = my_bs.vega()
 
     assert my_vega == mibian_vega
@@ -164,7 +164,7 @@ def test_calc_rho() -> None:
     mibian_call_rho = bs.callRho
     mibian_put_rho = bs.putRho
 
-    my_bs = BlackScholes(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
+    my_bs = BlackScholesModel(S, K, T/365, convert_pct_to_dec(r), convert_pct_to_dec(sigma))
     my_call_rho = my_bs.rho('call')
     my_put_rho = my_bs.rho('put')
 

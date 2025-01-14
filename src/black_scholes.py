@@ -1,7 +1,7 @@
 import math
 from scipy.stats import norm
 
-class BlackScholes:
+class BlackScholesModel:
     def __init__(self, S: float, K: float, T: float, r: float, sigma: float):
         """
         Initialize Black-Scholes model with option parameters.
